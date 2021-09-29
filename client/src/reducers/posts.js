@@ -1,15 +1,15 @@
-export default (volcanoes= [], action)=>{
+export default (state= [], action)=>{
     switch(action.type){
         case 'FETCH_ALL' :
             return action.payload
         case 'CREATE' :
-            return [...volcanoes, action.payload]
+            return [...state, action.payload]
         case 'UPDATE': 
-            return volcanoes.map(post=> post.name == action.payload._name ? action.payload : post)    
+            return state.map(post=> post.name == action.payload._name ? action.payload : post)    
         case 'DELETE':
-            return volcanoes.filter(volcano=> volcano.name === action.payload);
+            return state.filter(volcano=> volcano.name === action.payload);
         default:
-            return volcanoes
-            
+            return state
+
     }
 }

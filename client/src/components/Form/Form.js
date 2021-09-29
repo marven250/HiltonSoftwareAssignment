@@ -7,7 +7,7 @@ import { createVolcano, updateVolcano } from '../../api';
 const Form = ({currentName, setCurrentName})=>{
     const classes = useStyles();
     const dispatch = useDispatch();
-    const volcano = useSelector((state)=> currentName? state.posts.find((v)=> v.name == currentName): null);
+    const currentVolcano = useSelector((state)=> currentName? state.posts.find((v)=> v.name == currentName): null);
     const [volcanoData, setVolcanoData] = useState({
         _id: "",
         index: null,
@@ -20,13 +20,12 @@ const Form = ({currentName, setCurrentName})=>{
         longitude: null,
         type: ""
     });
-    
 
     useEffect(()=>{
-        if(volcano){
-            setVolcanoData(volcano)
+        if(currentVolcano){
+            setVolcanoData(currentVolcano)
         }
-    }, [volcano])
+    }, [currentVolcano])
 
     const handleSubmit = (e)=>{
         e.preventDefault();
@@ -42,14 +41,14 @@ const Form = ({currentName, setCurrentName})=>{
         setCurrentName(null);
         setVolcanoData({
             _id: "",
-            index: null,
-            isActive: null,
+            index: "",
+            isActive: "",
             population: "",
             name: "",
             description: "",
             discovered: "",
-            latitude: null,
-            longitude: null,
+            latitude: "",
+            longitude: "",
             type: ""
         })
     }

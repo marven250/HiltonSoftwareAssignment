@@ -39,9 +39,9 @@ export const updateVolcano = (name, updatedVolcano) => async (dispatch) =>{
 export const deleteVolcano = (name) => async (dispatch) =>{
     try{
         await api.deleteVolcano(name);
-        
 
-            dispatch({type: 'DELETE', payload: name})
+
+        dispatch({type: 'DELETE', payload: name})
         
     }catch(error){
         console.error(error)

@@ -1,14 +1,25 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import {Card, CardActions, CardContent, CardMedia, Button, Typography} from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete'
 import EditIcon from '@material-ui/icons/Edit';
 import { deleteVolcano } from '../../../api';
 import useStyles from './styles'
-import volcanoEruptPicture from './VolcanoErupt.png';;
+import volcanoEruptPicture from './VolcanoErupt.png';import { getPosts } from '../../../actions/posts';
+;
+
 
 
 const Post = ({volcano, setCurrentName})=>{
     const classes = useStyles();
+    const dispatch = useDispatch();
+
+    const removeVolcano= (name)=>{
+        deleteVolcano(name);
+        dispatch(getPosts());
+    }
+
+    
     return (
        <Card className={classes.card}>
            <CardMedia className= {classes.media} image={volcanoEruptPicture} title={volcano.name} />
@@ -29,12 +40,12 @@ const Post = ({volcano, setCurrentName})=>{
                     <EditIcon />
                     Edit
                </Button>
-               <Button size= 'small' color= 'secondary' onClick= {()=>{ deleteVolcano(volcano.name)}}>
+               <Button size= 'small' color= 'secondary' onClick= {()=>{ removeVolcano(volcano.name);}}>
                     <DeleteIcon fontSize= 'small' />
                     Delete
                </Button>
            </CardActions>
-           
+
        </Card>
     )
 }

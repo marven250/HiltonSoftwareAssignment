@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
+import './App.css'
 import {Container, AppBar, Typography, Grow, Grid} from '@material-ui/core';
-import { useDispatch } from 'react-redux';
-
+import { useDispatch, useSelector } from 'react-redux';
+import Pagination from './components/Pagination/Pagination';
 import {getPosts } from './actions/posts'
 import Posts from './components/Posts/Posts';
 import Form from './components/Form/Form'
@@ -12,7 +13,6 @@ function App() {
     const classes = useStyles();
     const dispatch = useDispatch();
     const [currentName, setCurrentName] = useState(null);
-        
       
     useEffect(()=>{
       dispatch(getPosts());
@@ -33,13 +33,9 @@ function App() {
             <Grid item xs={12} sm={7}>
               <Posts setCurrentName={setCurrentName} />
            </Grid>
-
            <Grid item xs={12} sm={4}> 
-
             <Form currentName = {currentName} setCurrentName={setCurrentName} />
-
            </Grid>
-
           </Grid>
         </Container>
       </Grow>
