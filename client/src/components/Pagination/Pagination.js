@@ -16,9 +16,9 @@ function Pagination({postsPerPage, totalPosts, paginate, currentPage, setCurrent
         if (number == 1 || number == pageNumbers.length || (number >= currentPage - 2 && number <= currentPage + 2)) {
         return (
             <li key={number} className="page-item">
-            <a onClick= {()=> paginate(number)} href="!#" className={selectedPageStyle + ' page-link'}>
+            <span onClick= {()=> paginate(number)} className={selectedPageStyle + ' page-link'}>
                 {number}
-            </a>
+            </span>
         </li>
         )}
       });
@@ -27,15 +27,15 @@ function Pagination({postsPerPage, totalPosts, paginate, currentPage, setCurrent
        <nav  id='pagination'>
            <ul className= 'pagination'>  
            <li className="page-item">
-                <a onClick= {()=> {currentPage> 1? setCurrentPage(currentPage-1): setCurrentPage(currentPage)}} href="!#" className="page-link">
+                <span onClick= {()=> {currentPage> 1? setCurrentPage(currentPage-1): setCurrentPage(currentPage)}} className="page-link">
                      &laquo;
-                </a>
+                </span>
            </li>
                 {renderPageNumbers()}
             <li className="page-item">
-                <a onClick= {()=> {currentPage<pageNumbers.length? setCurrentPage(currentPage+1): setCurrentPage(currentPage)}} href="!#" className="page-link">
+                <span onClick= {()=> {currentPage<pageNumbers.length? setCurrentPage(currentPage+1): setCurrentPage(currentPage)}} className="page-link">
                     &raquo;
-                 </a>
+                 </span>
            </li>
            </ul>
            

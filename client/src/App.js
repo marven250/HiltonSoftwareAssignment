@@ -13,6 +13,7 @@ function App() {
     const classes = useStyles();
     const dispatch = useDispatch();
     const [currentName, setCurrentName] = useState(null);
+    const [searchBoolean, setSearchBoolean] = useState(false);
       
     useEffect(()=>{
       dispatch(getPosts());
@@ -31,10 +32,10 @@ function App() {
         <Container>
           <Grid container justify= 'space-between' alignItems= 'stretch' spacing= {3}>
             <Grid item xs={12} sm={7}>
-              <Posts setCurrentName={setCurrentName} />
+              <Posts setSearchBoolean= {setSearchBoolean} setCurrentName={setCurrentName} />
            </Grid>
            <Grid item xs={12} sm={4}> 
-            <Form currentName = {currentName} setCurrentName={setCurrentName} />
+            <Form searchBoolean={searchBoolean} setSearchBoolean= {setSearchBoolean} currentName = {currentName} setCurrentName={setCurrentName} />
            </Grid>
           </Grid>
         </Container>

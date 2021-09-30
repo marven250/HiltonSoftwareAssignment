@@ -10,7 +10,7 @@ import volcanoEruptPicture from './VolcanoErupt.png';import { getPosts } from '.
 
 
 
-const Post = ({volcano, setCurrentName})=>{
+const Post = ({volcano, setCurrentName, setSearchBoolean})=>{
     const classes = useStyles();
     const dispatch = useDispatch();
 
@@ -19,6 +19,10 @@ const Post = ({volcano, setCurrentName})=>{
         dispatch(getPosts());
     }
 
+    const edit = ()=>{
+        setCurrentName(volcano.name)
+        setSearchBoolean(false);
+    }
     
     return (
        <Card className={classes.card}>
@@ -28,15 +32,15 @@ const Post = ({volcano, setCurrentName})=>{
                 <Typography variant= 'h6'>Type: {volcano.type}</Typography>
            </div>
            <CardContent>
-           <Typography className={classes.details} variant= "body2" color= 'textSecondary'>isActive: {volcano.isActive}</Typography>
-                <Typography className={classes.details} variant= "body2" color= 'textSecondary'>Population: {volcano.population}</Typography>
-                <Typography className={classes.details} variant='body2' color= 'textSecondary'>Description: {volcano.description}</Typography>
-               <Typography className={classes.details} variant= "body2" color= 'textSecondary'>Discovered: {volcano.discovered}</Typography>
-               <Typography className={classes.details} variant= "body2" color= 'textSecondary'>Latitude: {volcano.latitude}</Typography>
-               <Typography className={classes.details} variant= "body2" color= 'textSecondary'>Longitude: {volcano.longitude}</Typography>
+                <Typography className={classes.details} variant= "body2" color= 'textPrimary'>isActive: {JSON.stringify(volcano.isActive)}</Typography>
+                <Typography className={classes.details} variant= "body2" color= 'textPrimary'>Population: {volcano.population}</Typography>
+                <Typography className={classes.details} variant='body2' color= 'textPrimary'>Description: {volcano.description}</Typography>
+               <Typography className={classes.details} variant= "body2" color= 'textPrimary'>Discovered: {volcano.discovered}</Typography>
+               <Typography className={classes.details} variant= "body2" color= 'textPrimary'>Latitude: {volcano.latitude}</Typography>
+               <Typography className={classes.details} variant= "body2" color= 'textPrimary'>Longitude: {volcano.longitude}</Typography>
            </CardContent>
            <CardActions className= {classes.cardActions}>
-               <Button size= 'small' color='primary' onClick={()=>{setCurrentName(volcano.name)}}>
+               <Button size= 'small' color='primary' onClick={()=>{edit()}}>
                     <EditIcon />
                     Edit
                </Button>
