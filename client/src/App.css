@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+#pagination{
+ position: relative;
+ top: 30px;
+ left: 200px;
+ margin: 20px;
+}
