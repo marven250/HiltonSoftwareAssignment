@@ -52,9 +52,7 @@ export const deleteVolcano = (name) => async (dispatch) =>{
 
 export const searchVolcano = (volcano)=> async (dispatch) =>{
     try{
-        console.log('this is data user wants in hte action')
       let selectedVolcanoes =  await api.searchVolcano(volcano);
-            console.log('this selected volcanoes', selectedVolcanoes)
         if(selectedVolcanoes){
             dispatch({type: 'SEARCH', payload: selectedVolcanoes})
         }

@@ -2,8 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {TextField, Button, Typography, Paper} from '@material-ui/core'
 import useStyles from './styles'
 import { useDispatch, useSelector } from 'react-redux';
-import { createVolcano, updateVolcano} from '../../api';
-import { searchVolcano } from '../../actions/posts';
+import { searchVolcano , updateVolcano, createVolcano } from '../../actions/posts';
 import AddIcon from '@material-ui/icons/Add';
 import SearchIcon from '@material-ui/icons/Search';
 import HomeIcon from '@material-ui/icons/Home';
@@ -37,11 +36,13 @@ const Form = ({currentName, setCurrentName, searchBoolean, setSearchBoolean})=>{
         e.preventDefault();
         console.log('this is search Boolean', searchBoolean)
         if(currentName){
-            updateVolcano(currentName, volcanoData)
+            dispatch(updateVolcano(currentName, volcanoData))
+            resetVolcanoes();
         }else if(searchBoolean){
             dispatch(searchVolcano(volcanoData));
         }else{
-        createVolcano(volcanoData);
+        dispatch(createVolcano(volcanoData));
+        resetVolcanoes()
         }
         clear();
     }
